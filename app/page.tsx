@@ -44,7 +44,7 @@ export default function SubmitPage() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col px-5 py-8 max-w-xl mx-auto w-full">
+    <main className="px-5 py-8 max-w-xl mx-auto w-full">
       <header className="mb-8">
         <div className="text-xs uppercase tracking-[0.2em] text-indigo-300/80 mb-2">
           AI 301
@@ -58,7 +58,7 @@ export default function SubmitPage() {
       </header>
 
       {status === 'sent' ? (
-        <div className="flex-1 flex flex-col items-center justify-center text-center gap-6 py-12">
+        <div className="flex flex-col items-center justify-center text-center gap-6 py-16">
           <div className="w-16 h-16 rounded-full bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400">
               <polyline points="20 6 9 17 4 12" />
@@ -76,7 +76,7 @@ export default function SubmitPage() {
           </button>
         </div>
       ) : (
-        <form onSubmit={submit} className="flex flex-col gap-4 flex-1">
+        <form onSubmit={submit} className="flex flex-col gap-4">
           <label className="text-sm text-slate-300" htmlFor="q">
             Your question
           </label>
@@ -100,7 +100,7 @@ export default function SubmitPage() {
           <button
             type="submit"
             disabled={!text.trim() || status === 'sending'}
-            className="mt-auto sm:mt-4 w-full py-4 rounded-xl bg-indigo-500 hover:bg-indigo-400 active:bg-indigo-600 disabled:bg-slate-700 disabled:text-slate-400 font-semibold text-base transition-colors"
+            className="mt-2 w-full py-4 rounded-xl bg-indigo-500 hover:bg-indigo-400 active:bg-indigo-600 disabled:bg-slate-700 disabled:text-slate-400 font-semibold text-base transition-colors"
           >
             {status === 'sending' ? 'Sending…' : 'Send question'}
           </button>

@@ -5,8 +5,13 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const MAX_LEN = 500;
+const MAX_BYTES = 2048;
 
 export async function POST(req: NextRequest) {
+  const contentLength = Number(req.headers.get('content-length') || 0);
+  if (contentLength > MAX_BYTES) {
+    return NextResponse.json({ error: 'Payload too large' }, { status: 413 });
+  }
   let body: any;
   try {
     body = await req.json();

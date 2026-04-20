@@ -1,0 +1,27 @@
+name: ai301-questions
+services:
+  - name: web
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    http_port: 8080
+    source_dir: /
+    github:
+      repo: ryexdev/ACPN2026Poll
+      branch: main
+      deploy_on_push: true
+    build_command: npm ci && npm run build
+    run_command: npm start
+    envs:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "8080"
+      - key: DB_DIR
+        value: /tmp
+      - key: ADMIN_KEY
+        scope: RUN_TIME
+        type: SECRET
+        # Set the value in the DO dashboard (App → Settings → web → Environment Variables).
+        # Used by the "Clear all" button on the presenter page.
+    health_check:
+      http_path: /

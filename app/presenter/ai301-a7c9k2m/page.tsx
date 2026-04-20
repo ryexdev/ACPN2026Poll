@@ -109,12 +109,22 @@ export default function PresenterPage() {
             {error ? `Connection error: ${error}` : stale ? 'Reconnecting…' : 'Live'}
           </span>
         </div>
-        <button
-          onClick={clearAll}
-          className="text-slate-500 hover:text-rose-400 transition-colors"
-        >
-          Clear all
-        </button>
+        <div className="flex items-center gap-4">
+          <a
+            href="/presenter/ai301-a7c9k2m/summary"
+            target="_blank"
+            rel="noopener"
+            className="text-slate-400 hover:text-indigo-300 transition-colors"
+          >
+            Summary →
+          </a>
+          <button
+            onClick={clearAll}
+            className="text-slate-500 hover:text-rose-400 transition-colors"
+          >
+            Clear all
+          </button>
+        </div>
       </div>
 
       {questions.length === 0 ? (
